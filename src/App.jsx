@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import { Card, Row, Button } from "react-bootstrap";
+import { Card, Row, Button, Col } from "react-bootstrap";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 function App() {
@@ -33,26 +33,36 @@ function App() {
 		<>
 			<Row>
 				{movies.map((movie) => (
-					<Card key={movie.sys.id} style={{ width: "18rem" }}>
-						<Card.Img
-							style={{ height: "300px" }}
-							variant="top"
-							src={movie.fields.image?.fields.file.url}
-						/>
-						<Card.Body>
-							<Card.Title>{movie.fields.title}</Card.Title>
-							<Card.Text>
-								{documentToReactComponents(movie.fields.body)}
+					<Col xs={12} sm={6} md={4} lg={3} className="mb-4"> 
+						<Card key={movie.sys.id} className="h-100 d-flex flex-column">
+							<Card.Img
+								style={{ height: "300px" }}
+								variant="top"
+								src={movie.fields.image?.fields.file.url}
+							/>
+							<Card.Body className="flex-grow-1">
+								<Card.Title>{movie.fields.title}</Card.Title>
+								<Card.Text>
+									{documentToReactComponents(movie.fields.body)}
 
-							</Card.Text>
-							<Button variant="primary" className="mt-5">
-								Details
-							</Button>
-              <Button variant="success" className="mt-5">
-								Watch trailer
-							</Button>
-						</Card.Body>
-					</Card>
+								</Card.Text>
+								<div className="mt-auto">
+									<Row className="gx-4 justify-content-center"> 
+										<Col xs={6} className="px-1 d-flex justify-content-center"> 
+											<Button variant="primary" className="text-nowrap">
+												Details
+											</Button>
+										</Col>
+										<Col xs={6} className="px-1 d-flex justify-content-center"> 
+											<Button variant="success" className="text-nowrap">
+												Watch trailer
+											</Button>
+										</Col>
+									</Row>
+								</div>
+							</Card.Body>
+						</Card>
+					</Col>
 				))}
 			</Row>
 		</>
