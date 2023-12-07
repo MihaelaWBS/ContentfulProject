@@ -25,7 +25,10 @@ function App() {
 
 		client
 			.getEntries()
-			.then((response) => setMovies(response.items))
+			.then((response) => {
+				setMovies(response.items)
+				console.log(response.items);
+			})
 			.catch(console.error);
 	}, []);
 
@@ -33,39 +36,38 @@ function App() {
 		<>
 			<Row>
 				{movies.map((movie) => (
-					<Col xs={12} sm={6} md={4} lg={3} className="mb-4"> 
-						<Card key={movie.sys.id} className="h-100 d-flex flex-column">
-							<Card.Img
-								style={{ height: "300px" }}
-								variant="top"
-								src={movie.fields.image?.fields.file.url}
-							/>
-							<Card.Body className="flex-grow-1">
-								<Card.Title>{movie.fields.title}</Card.Title>
-								<Card.Text>
-									{documentToReactComponents(movie.fields.body)}
-
-								</Card.Text>
-								<div className="mt-auto">
-									<Row className="gx-4 justify-content-center"> 
-										<Col xs={6} className="px-1 d-flex justify-content-center"> 
-											<Button variant="primary" className="text-nowrap">
-												Details
-											</Button>
-										</Col>
-										<Col xs={6} className="px-1 d-flex justify-content-center"> 
-											<Button variant="success" className="text-nowrap">
-												Watch trailer
-											</Button>
-										</Col>
-									</Row>
-								</div>
-							</Card.Body>
-						</Card>
-					</Col>
+				
+					<Col xs={12} sm={6} md={4} lg={3} className="mb-4">
+					<Card key={movie.sys.id} className="h-100 d-flex flex-column">
+					<Card.Img
+						style={{ height: "300px" }}
+						variant="top"
+						src={movie.fields.image?.fields.file.url}
+					/>
+					<Card.Body className="flex-grow-1 d-flex flex-column">
+						<Card.Title className="mb-3 fw-bold">{movie.fields.title}</Card.Title>
+						<Card.Text className="text-start flex-grow-1">
+						{documentToReactComponents(movie.fields.body)}
+						</Card.Text>
+						{/* Buttons aligned at the bottom */}
+						<div className="mt-auto">
+						<div className="d-flex justify-content-around"> {/* Adjust button spacing */}
+							<Button variant="primary" className="text-nowrap">
+							Details
+							</Button>
+							<Button variant="success" className="text-nowrap">
+							Watch trailer
+							</Button>
+						</div>
+						</div>
+					</Card.Body>
+					</Card>
+				</Col>
 				))}
 			</Row>
 		</>
+
+				
 	);
 }
 
