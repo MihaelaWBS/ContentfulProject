@@ -6,8 +6,9 @@ import { NavLink } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import { Card, Row, Button, Col } from "react-bootstrap";
+import { Card, Row, Button, Col, Stack } from "react-bootstrap";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import SortFilm from "./component/SortFilm";
 
 function App() {
 	const [movies, setMovies] = useState([]);
@@ -34,19 +35,33 @@ function App() {
 
 	return (
 		<>
+		<Row>
+			<Col md={2} className="mb-3 text-center">
+			<SortFilm movies={movies} setMovies={setMovies} />
+			</Col>
+		</Row>
 			<Row>
 				{movies.map((movie) => (
 				
-					<Col xs={12} sm={6} md={4} lg={3} className="mb-4">
+					<Col xs={12} sm={12} md={6} lg={4} xxl={3} className="mb-4">
 					<Card key={movie.sys.id} className="h-100 d-flex flex-column">
+					<Row className="d-flex justify-content-center">
 					<Card.Img
-						style={{ height: "300px" }}
+						className="text-center"
+						style={{ height: "300px", width: '222px' }}
 						variant="top"
 						src={movie.fields.image?.fields.file.url}
 					/>
+					</Row>
 					<Card.Body className="flex-grow-1 d-flex flex-column">
 						<Card.Title className="mb-3 fw-bold">{movie.fields.title}</Card.Title>
 						<Card.Text className="text-start flex-grow-1">
+							<Stack direction="horizontal" gap={3} className="d-flex justify-content-center align-itemscenter text-center">
+							<p >{movie.fields.year}</p>
+							<div className="vr" />
+							<span class="fa fa-star checked"></span>
+							<p className="info">{movie.fields.rating}</p>
+							</Stack>
 						{documentToReactComponents(movie.fields.body)}
 						</Card.Text>
 						{/* Buttons aligned at the bottom */}
