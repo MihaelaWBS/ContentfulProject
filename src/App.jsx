@@ -52,7 +52,7 @@ function App() {
 						{/* Buttons aligned at the bottom */}
 						<div className="mt-auto">
 						<div className="d-flex justify-content-around"> {/* Adjust button spacing */}
-							<Button variant="primary" className="text-nowrap">
+							<Button variant="primary" className="text-nowrap me-2">
 							Details
 							</Button>
 							<Button variant="success" className="text-nowrap">
