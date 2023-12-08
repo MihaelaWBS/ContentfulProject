@@ -9,9 +9,11 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import { Card, Row, Button, Col, Stack } from "react-bootstrap";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import SortFilm from "./component/SortFilm";
+import FilterFilms from "./component/FilterFilms";
 
 function App() {
 	const [movies, setMovies] = useState([]);
+	const [copyMovies, setCopyMovies] = useState([]);
 
 	useEffect(() => {
 		const SPACE_ID = import.meta.env.VITE_SPACE_ID;
@@ -28,16 +30,19 @@ function App() {
 			.getEntries()
 			.then((response) => {
 				setMovies(response.items)
-				console.log(response.items);
+				setCopyMovies(response.items);
 			})
 			.catch(console.error);
 	}, []);
 
 	return (
 		<>
-		<Row>
+		<Row >
 			<Col md={2} className="mb-3 text-center">
 			<SortFilm movies={movies} setMovies={setMovies} />
+			</Col>
+			<Col md={6}>
+				{copyMovies.length > 0?<FilterFilms movies={movies} setMovies={setMovies} copyMovies={copyMovies} />:<p>Loading...</p>}
 			</Col>
 		</Row>
 			<Row>
