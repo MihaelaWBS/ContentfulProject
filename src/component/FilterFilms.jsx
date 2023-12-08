@@ -12,10 +12,10 @@ function FilterFilms({movies, setMovies, copyMovies}) {
     setYear({...year, [e.target.name]: e.target.value});
     switch(e.target.name){
       case 'from':
-        filter(e.target.value, year.till, 4);
+        filter(e.target.value, year.till);
         break;
       case 'till':
-        filter(year.from, e.target.value, 4);
+        filter(year.from, e.target.value);
         break;
     }
   }
@@ -24,23 +24,23 @@ function FilterFilms({movies, setMovies, copyMovies}) {
     setRating({...rating, [e.target.name]: e.target.value});
     switch(e.target.name){
       case 'fromRating':
-        filterRating(e.target.value, rating.tillRating, 1);
+        filterRating(e.target.value, rating.tillRating);
         break;
       case 'tillRating':
-        filterRating(rating.fromRating, e.target.value, 1);
+        filterRating(rating.fromRating, e.target.value);
         break;
     }
   }
 
-  const filter = (from, till, num) => {
+  const filter = (from, till) => {
 
       const newMovies = [...copyMovies].filter(movie => {
         if(from != null && till == null){
           console.log(from);
           return movie.fields.year > from;
-        } else if(from == null && till != null && till.toString().length > num){
+        } else if(from == null && till != null && till.toString().length > 3){
           return movie.fields.year < till
-        } else if (from != null && till != null && till.toString().length > num){
+        } else if (from != null && till != null && till.toString().length > 3){
           return movie.fields.year > from && movie.fields.year < till
         } else {
           return movie;
@@ -50,15 +50,15 @@ function FilterFilms({movies, setMovies, copyMovies}) {
       setMovies(newMovies);
   }
 
-  const filterRating = (from, till, num) => {
+  const filterRating = (from, till) => {
     if(from.toString.length < 2){
       const newMovies = [...copyMovies].filter(movie => {
         if(from != null && till == null){
           console.log(from);
           return movie.fields.rating > from;
-        } else if(from == null && till != null && till.toString().length > num){
+        } else if(from == null && till != null && till.toString().length < 2){
           return movie.fields.rating < till
-        } else if (from != null && till != null && till.toString().length > num){
+        } else if (from != null && till != null && till.toString().length < 2){
           return movie.fields.rating > from && movie.fields.rating < till
         } else {
           return movie;
