@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation } from "react-router-dom"; // Import useLocation
-import { Container, Row, Col, ResponsiveEmbed } from 'react-bootstrap'; // Import Bootstrap components
+import { Container, Row, Col } from 'react-bootstrap'; // Import Bootstrap components
+
 
 const Video = () => {
     const location = useLocation();
@@ -10,10 +11,14 @@ const Video = () => {
         <Container>
             <Row className="justify-content-center">
                 <Col md={8}>
-                    <ResponsiveEmbed aspectRatio="16by9">
-                        <iframe title="Movie Trailer" src={videoUrl} allowFullScreen></iframe>
-                        {/* Embed the video iframe */}
-                    </ResponsiveEmbed>
+                <div style={{ position: "relative", paddingBottom: "56.25%", height: 0, overflow: "hidden" }}>
+                        <iframe 
+                            style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
+                            src={videoUrl}
+                            title="Movie Trailer"
+                            allowFullScreen
+                        ></iframe>
+                    </div>
                 </Col>
             </Row>
         </Container>
