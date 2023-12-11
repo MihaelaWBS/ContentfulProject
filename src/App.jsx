@@ -10,6 +10,7 @@ import { Card, Row, Button, Col, Stack } from "react-bootstrap";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import SortFilm from "./component/SortFilm";
 import FilterFilms from "./component/FilterFilms";
+import FetchMovieDetails from "./component/FetchMovieDetails";
 
 function App() {
 	const [movies, setMovies] = useState([]);
@@ -71,15 +72,13 @@ function App() {
 						</Card.Text>
 						{/* Buttons aligned at the bottom */}
 						<div className="mt-auto">
-						<div className="d-flex justify-content-around"> {/* Adjust button spacing */}
-							<Button variant="primary" className="text-nowrap">
-							Details
-							</Button>
-							<Button variant="success" className="text-nowrap">
-							Watch trailer
-							</Button>
-						</div>
-						</div>
+              <div className="d-flex justify-content-around">
+                <FetchMovieDetails movieId={movie.sys.id} />
+                <Button variant="success" className="text-nowrap">
+                  Watch trailer
+                </Button>
+              </div>
+            </div>
 					</Card.Body>
 					</Card>
 				</Col>
