@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { Card, Row, Button, Col,Stack, Container  } from "react-bootstrap";
 import { createClient } from "contentful";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import "../App.css";
 
 
 
@@ -37,10 +38,13 @@ function ListOfFilms() {
 <Container>
 
 <Row className="justify-content-center">
-<h1 className="m-5" >Movies List </h1>  
+<h1  style={{fontFamily: 'Impact, Charcoal, sans-serif',
+    fontSize: '3.5rem',
+    textShadow: '1px 1px 0px black', 
+    marginBottom: "5rem", marginTop: "5rem"}} >MOVIES LIST </h1>  
   {movies.map((movie) => (
   
-    <Col xs={12} sm={6} md={4} lg={3} className="mb-4">
+    <Col xs={10} sm={8} md={6} lg={4} xl={3} className="mb-4">
     <Card key={movie.sys.id} className="h-100 d-flex flex-column">
     <Card.Img
       style={{ height: "300px" }}
@@ -52,8 +56,7 @@ function ListOfFilms() {
       <Card.Text className="text-start flex-grow-1">
       {documentToReactComponents(movie.fields.body)}
       </Card.Text>
-      
-       <Stack direction="horizontal" gap={3} className="d-flex justify-content-center align-items-center text-center">
+      <Stack direction="horizontal" gap={3} className="d-flex justify-content-center align-items-center text-center">
 							<p > <b>Year:</b> {movie.fields.year}</p>
               {/*
               <div className="vr" style={{ height: "20px"}}/>
@@ -64,8 +67,6 @@ function ListOfFilms() {
               
 			</Stack>
 							
-              
- 
       {/* Buttons aligned at the bottom */}
       <div className="mt-auto">
       <div className="d-flex justify-content-around"> {/* Adjust button spacing */}

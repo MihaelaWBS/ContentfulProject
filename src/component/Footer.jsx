@@ -2,9 +2,8 @@
 
 import React from 'react'
 import "../App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 import * as mdb from 'mdb-ui-kit'; 
-import 'mdb-ui-kit/css/mdb.min.css';
+
 window.mdb = mdb;
 
 const Footer = () => {
@@ -16,7 +15,8 @@ const Footer = () => {
        
         <div className="text-center ">
             <div className="text-center p-3" >
-                © 2020 Copyright: 
+                © 2020 Copyright 
+                
                 <a className="text-body" href="https://mdbootstrap.com/"> Movies ACM</a>
             </div>
 
