@@ -49,10 +49,10 @@ const Header = () => {
 			<Navbar.Collapse id="basic-navbar-nav">
 				<Nav className="ms-auto me-5">
 					<LinkContainer to="/">
-						<Nav.Link className="me-5">Home</Nav.Link>
+						<Nav.Link className="me-5 ms-5">Home</Nav.Link>
 					</LinkContainer>
 					<LinkContainer to="/moviedetails">
-						<Nav.Link>Movie Details</Nav.Link>
+						<Nav.Link className="ms-5">Movie Details</Nav.Link>
 					</LinkContainer>
 				</Nav>
 			</Navbar.Collapse>

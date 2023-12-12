@@ -4,6 +4,7 @@ import { Card, Row, Button, Col,Stack, Container  } from "react-bootstrap";
 import { createClient } from "contentful";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import "../App.css";
+import FetchTrailer from "./FetchTrailer";
 
 
 
@@ -58,12 +59,7 @@ function ListOfFilms() {
       </Card.Text>
       <Stack direction="horizontal" gap={3} className="d-flex justify-content-center align-items-center text-center">
 							<p > <b>Year:</b> {movie.fields.year}</p>
-              {/*
-              <div className="vr" style={{ height: "20px"}}/>
-               
-                <span className="fa fa-star checked mb-3" style={{color: "#F6C100"}}></span>
-                */}
-                <p className="info"><b> Rating: </b>  {movie.fields.rating}</p>
+              <p className="info"><b> Rating: </b>  {movie.fields.rating}</p>
               
 			</Stack>
 							
@@ -73,20 +69,7 @@ function ListOfFilms() {
         <Button variant="primary" className="text-nowrap me-2">
         Details
         </Button>
-        <Button variant="success" className="text-nowrap" onClick={() => {
-            const trailerUrl = movie.fields.video?.fields.file.url;
-            if (trailerUrl) {
-              window.open(trailerUrl);
-              const trailer = new Trailer(trailerUrl);
-              trailer.play();
-            }
-        }}>
-        
-        Watch trailer
-        </Button>
-        
-
-
+        <FetchTrailer movieId={movie.sys.id} movieTitle={movie.fields.title}/>
       </div>
       </div>
     </Card.Body>
