@@ -43,7 +43,28 @@
 .checked {
   color: orange;
 }
-
+.filters-search{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: gray;
+  z-index: 2;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+  --bs-gutter-x: 0 !important;
+}
+.genre-toast{
+  color: black;
+}
+.toast{
+  --bs-toast-max-width: 100% !important;
+}
+.checkbox-genre{
+  text-align: left;
+}
 /*
 @media only screen and (min-width: 1200px) {
   .movie-card {

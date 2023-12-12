@@ -51,7 +51,7 @@ function FilterFilms({movies, setMovies, copyMovies}) {
   }
 
   const filterRating = (from, till) => {
-    if(from.toString.length < 2){
+      console.log(till);
       const newMovies = [...copyMovies].filter(movie => {
         if(from != null && till == null){
           console.log(from);
@@ -65,10 +65,7 @@ function FilterFilms({movies, setMovies, copyMovies}) {
         }
       })
       console.log(newMovies);
-      setMovies(newMovies);
-    } else {
-      setMovies(copyMovies);
-    }
+      setMovies(newMovies); 
 }
 
 

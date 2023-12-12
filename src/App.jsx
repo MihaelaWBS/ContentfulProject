@@ -10,10 +10,14 @@ import { Card, Row, Button, Col, Stack } from "react-bootstrap";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import SortFilm from "./component/SortFilm";
 import FilterFilms from "./component/FilterFilms";
+import Placeholder from 'react-bootstrap/Placeholder';
+import Spinner from 'react-bootstrap/Spinner';
+import FilterGenres from "./component/FilterGenres";
 
 function App() {
 	const [movies, setMovies] = useState([]);
 	const [copyMovies, setCopyMovies] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
 		const SPACE_ID = import.meta.env.VITE_SPACE_ID;
@@ -31,22 +35,34 @@ function App() {
 			.then((response) => {
 				setMovies(response.items)
 				setCopyMovies(response.items);
+				setIsLoading(!isLoading);
+				console.log(response.items);
 			})
 			.catch(console.error);
 	}, []);
 
 	return (
 		<>
-		<Row >
+		<Row className="filters-search">
+		<Row>
 			<Col md={2} className="mb-3 text-center">
 			<SortFilm movies={movies} setMovies={setMovies} />
 			</Col>
 			<Col md={6}>
-				{copyMovies.length > 0?<FilterFilms movies={movies} setMovies={setMovies} copyMovies={copyMovies} />:<p>Loading...</p>}
+				{copyMovies.length > 0?<FilterFilms movies={movies} setMovies={setMovies} copyMovies={copyMovies} />:<Placeholder />}
 			</Col>
+			</Row>
+			<Row>
+				<Col>
+				<FilterGenres movies={movies} setMovies={setMovies} copyMovies={copyMovies}/>
+				</Col>
+			</Row>
 		</Row>
 			<Row>
-				{movies.map((movie) => (
+				{isLoading
+				?<Spinner animation="border" />
+				:movies.length === 0?<p>No such search result</p>
+				:movies.map((movie) => (
 				
 					<Col xs={12} sm={12} md={6} lg={4} xxl={3} className="mb-4">
 					<Card key={movie.sys.id} className="h-100 d-flex flex-column">
