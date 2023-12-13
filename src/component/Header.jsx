@@ -33,7 +33,6 @@ export default Header;
 
 import React from "react";
 import { NavLink } from "react-router-dom";
-
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { LinkContainer } from "react-router-bootstrap";
@@ -48,11 +47,11 @@ const Header = () => {
 			<Navbar.Toggle aria-controls="basic-navbar-nav" className="me-5" />
 			<Navbar.Collapse id="basic-navbar-nav">
 				<Nav className="ms-auto me-5">
-					<LinkContainer to="/">
-						<Nav.Link className="me-5 ms-5">Home</Nav.Link>
+					<LinkContainer to="/" activeClassName="active">
+						<Nav.Link className="nav-link custom-nav-link">Home</Nav.Link>
 					</LinkContainer>
-					<LinkContainer to="/moviedetails">
-						<Nav.Link className="ms-5">Movie Details</Nav.Link>
+					<LinkContainer to="/moviedetails" activeClassName="active">
+						<Nav.Link className="nav-link custom-nav-link">Movie Details</Nav.Link>
 					</LinkContainer>
 				</Nav>
 			</Navbar.Collapse>

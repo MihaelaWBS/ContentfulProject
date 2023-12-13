@@ -17,7 +17,7 @@ const Footer = () => {
             <div className="text-center p-3" >
                 © 2020 Copyright 
                 
-                <a className="text-body" href="https://mdbootstrap.com/"> Movies ACM</a>
+                <a className="text-body text-decoration-none" href="/" > Movies ACM</a>
             </div>
 
         </div> 

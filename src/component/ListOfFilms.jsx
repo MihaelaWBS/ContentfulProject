@@ -5,6 +5,7 @@ import { createClient } from "contentful";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import "../App.css";
 import FetchTrailer from "./FetchTrailer";
+import movieLogo from '../assets/movieLogo.png';
 
 
 
@@ -39,10 +40,10 @@ function ListOfFilms() {
 <Container>
 
 <Row className="justify-content-center">
-<h1  style={{fontFamily: 'Impact, Charcoal, sans-serif',
-    fontSize: '3.5rem',
-    textShadow: '1px 1px 0px black', 
-    marginBottom: "5rem", marginTop: "5rem"}} >MOVIES LIST </h1>  
+  <h1  style={{
+    fontSize: '3rem',
+  marginBottom: "5rem", marginTop: "5rem"}} >Movies list </h1> 
+    
   {movies.map((movie) => (
   
     <Col xs={10} sm={8} md={6} lg={4} xl={3} className="mb-4">
