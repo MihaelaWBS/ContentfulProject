@@ -7,16 +7,18 @@ h1 {
 }
 
 .row {
-	max-width: 1280px;
 	margin: 0 auto;
-	padding: 2rem;
 	text-align: center;
 }
 
 #root {
   background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
 }
 
+.all-contant{
+  min-height: 100vh;
+}
 .navbar .nav-link.custom-nav-link:hover {
   color: #007bff; /* This is the default primary color in Bootstrap */
 }
@@ -45,7 +47,31 @@ h1 {
 .card-effect:hover {
   transform: scale(1.05);
 }
-
+.filters-search{
+  width: 100%;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+  --bs-gutter-x: 0 !important;
+}
+.genre-toast{
+  color: black;
+}
+.toast{
+  --bs-toast-max-width: 100% !important;
+}
+.checkbox-genre{
+  text-align: left;
+}
+.bi-dash{
+  color: black;
+}
+.bi-star-half{
+  color: black;
+}
+.bi-calendar-event{
+  color: black;
+}
 /*
   background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
    background-image: linear-gradient(60deg, #abecd6 0%, #fbed96 100%);

@@ -6,12 +6,19 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import "../App.css";
 import FetchTrailer from "./FetchTrailer";
 import movieLogo from '../assets/movieLogo.png';
+import SortFilm from './SortFilm';
+import FilterFilms from './FilterFilms';
+import FilterGenres from './FilterGenres';
+import { Placeholder } from 'react-bootstrap';
+import {Spinner} from 'react-bootstrap';
 
 
 
 function ListOfFilms() {
 
   const [movies, setMovies] = useState([]);
+  const [copyMovies, setCopyMovies] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
 
 	
 
@@ -30,7 +37,8 @@ function ListOfFilms() {
 			.getEntries()
 			.then((response) => {
 				setMovies(response.items)
-				console.log(response.items);
+        setCopyMovies(response.items);
+				setIsLoading(!isLoading);
 			})
 			.catch(console.error);
 	}, []);
@@ -39,12 +47,30 @@ function ListOfFilms() {
   return (
 <Container>
 
-<Row className="justify-content-center">
+<Row className="justify-content-center all-contant">
   <h1  style={{
     fontSize: '3rem',
-  marginBottom: "5rem", marginTop: "5rem"}} >Movies list </h1> 
+  marginBottom: "5rem", marginTop: "5rem"}} >Movies list </h1>
+  <Row className="filters-search">
+		<Row>
+			<Col md={2} className="mb-3 text-center">
+      {copyMovies.length > 0?<SortFilm movies={movies} setMovies={setMovies} />:<Placeholder />}
+			</Col>
+			<Col md={6}>
+				{copyMovies.length > 0?<FilterFilms movies={movies} setMovies={setMovies} copyMovies={copyMovies} />:<Placeholder />}
+			</Col>
+			</Row>
+			<Row>
+				<Col>
+        {copyMovies.length > 0?<FilterGenres movies={movies} setMovies={setMovies} copyMovies={copyMovies}/>:<Placeholder />}
+				</Col>
+			</Row>
+</Row> 
     
-  {movies.map((movie) => (
+  {isLoading
+		?<Spinner animation="border" />
+		:movies.length === 0?<p>No such search result</p>
+		:movies.map((movie) => (
   
     <Col xs={10} sm={8} md={6} lg={4} xl={3} className="mb-4">
     <Card key={movie.sys.id} className="h-100 d-flex flex-column card-effect">
