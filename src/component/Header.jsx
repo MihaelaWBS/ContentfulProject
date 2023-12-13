@@ -42,7 +42,7 @@ const Header = () => {
 	return (
 		<Navbar bg="light" expand="lg" className="fixed-top">
 			<Navbar.Brand href="#home" className="ms-5" variant="dark">
-				Movies ACM
+				FILMMAKER Production
 			</Navbar.Brand>
 			<Navbar.Toggle aria-controls="basic-navbar-nav" className="me-5" />
 			<Navbar.Collapse id="basic-navbar-nav">

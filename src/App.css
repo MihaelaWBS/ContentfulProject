@@ -38,6 +38,14 @@ h1 {
 }
 }
 
+.card-effect {
+  transition: transform 0.3s ease-in-out;
+}
+
+.card-effect:hover {
+  transform: scale(1.05);
+}
+
 /*
   background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
    background-image: linear-gradient(60deg, #abecd6 0%, #fbed96 100%);

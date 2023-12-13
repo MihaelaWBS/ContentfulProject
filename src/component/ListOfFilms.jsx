@@ -47,7 +47,7 @@ function ListOfFilms() {
   {movies.map((movie) => (
   
     <Col xs={10} sm={8} md={6} lg={4} xl={3} className="mb-4">
-    <Card key={movie.sys.id} className="h-100 d-flex flex-column">
+    <Card key={movie.sys.id} className="h-100 d-flex flex-column card-effect">
     <Card.Img
       style={{ height: "300px" }}
       variant="top"
