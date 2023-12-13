@@ -40,13 +40,21 @@ h1 {
 }
 }
 
-.card-effect {
-  transition: transform 0.3s ease-in-out;
+@media (min-width: 768px) {
+
+  .card-effect {
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .card-effect:hover {
+    transform: scale(1.05);
+  }
+
 }
 
-.card-effect:hover {
-  transform: scale(1.05);
-}
+
+
+
 .filters-search{
   width: 100%;
   color: #fff;

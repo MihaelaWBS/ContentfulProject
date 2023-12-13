@@ -11,6 +11,7 @@ import FilterFilms from './FilterFilms';
 import FilterGenres from './FilterGenres';
 import { Placeholder } from 'react-bootstrap';
 import {Spinner} from 'react-bootstrap';
+import FetchMovieDetails from "./FetchMovieDetails";
 
 
 
@@ -93,9 +94,7 @@ function ListOfFilms() {
       {/* Buttons aligned at the bottom */}
       <div className="mt-auto">
       <div className="d-flex justify-content-around"> {/* Adjust button spacing */}
-        <Button variant="primary" className="text-nowrap me-2">
-        Details
-        </Button>
+        <FetchMovieDetails movieId={movie.sys.id} />
         <FetchTrailer movieId={movie.sys.id} movieTitle={movie.fields.title}/>
       </div>
       </div>
