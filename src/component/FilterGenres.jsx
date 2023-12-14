@@ -106,7 +106,7 @@ function FilterGenres({movies, setMovies, copyMovies}) {
   return (
     <Row>
       <Col>
-        <Button onClick={toggleShowA}>
+        <Button className='mt-3' onClick={toggleShowA}>
           {showA
           ?'Close Genre Filter'
           :'Open Genre Filter' 

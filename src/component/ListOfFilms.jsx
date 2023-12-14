@@ -53,11 +53,11 @@ function ListOfFilms() {
     fontSize: '3rem',
   marginBottom: "5rem", marginTop: "5rem"}} >Movies list </h1>
   <Row className="filters-search">
-		<Row>
-			<Col md={2} className="mb-3 text-center">
+		<Row className='d-flex justify-content-center'>
+			<Col xs={6} sm={4} md={2} className="mb-3 text-center">
       {copyMovies.length > 0?<SortFilm movies={movies} setMovies={setMovies} />:<Placeholder />}
 			</Col>
-			<Col md={6}>
+			<Col sm={12} md={8}>
 				{copyMovies.length > 0?<FilterFilms movies={movies} setMovies={setMovies} copyMovies={copyMovies} />:<Placeholder />}
 			</Col>
 			</Row>
