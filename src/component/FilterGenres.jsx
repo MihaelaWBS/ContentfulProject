@@ -115,7 +115,7 @@ function FilterGenres({movies, setMovies, copyMovies}) {
           <Toast.Body className='genre-toast'>
             <Row xs={2} sm={3} md={6} xxl={7}>
             {genres.map(newGenre => (
-              isLoading?
+              genres.length>0?
               <Col>
                 <Form.Check
                 onChange={GenreHandler}
