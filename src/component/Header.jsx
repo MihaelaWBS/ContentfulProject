@@ -51,7 +51,7 @@ const Header = () => {
 						<Nav.Link className="nav-link custom-nav-link">Home</Nav.Link>
 					</LinkContainer>
 					<LinkContainer to="/moviedetails" activeClassName="active">
-						<Nav.Link className="nav-link custom-nav-link">Movie Details</Nav.Link>
+						<Nav.Link className="nav-link custom-nav-link">About us</Nav.Link>
 					</LinkContainer>
 				</Nav>
 			</Navbar.Collapse>
