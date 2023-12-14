@@ -29,8 +29,9 @@ function FilterGenres({movies, setMovies, copyMovies}) {
       });
 
       setGenres(finalGenres.sort((genreA, genreB) => genreA.localeCompare(genreB)));
+      console.log('456', genres);
       
-  }, [copyMovies]);
+  }, []);
 
   useEffect(() => {
     let newGenres = {};
@@ -115,7 +116,6 @@ function FilterGenres({movies, setMovies, copyMovies}) {
           <Toast.Body className='genre-toast'>
             <Row xs={2} sm={3} md={6} xxl={7}>
             {genres.map(newGenre => (
-              genres.length>0?
               <Col>
                 <Form.Check
                 onChange={GenreHandler}
@@ -126,7 +126,7 @@ function FilterGenres({movies, setMovies, copyMovies}) {
                 id={`checkbox-${newGenre}`}
                 label={newGenre}
                 />
-            </Col>:<p>Loading...</p>))}
+            </Col>))}
             </Row>
           </Toast.Body>
         </Toast>
